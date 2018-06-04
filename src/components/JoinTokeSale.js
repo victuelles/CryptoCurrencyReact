@@ -10,7 +10,6 @@ let sectionStyleHeaderMasthead = {
   width: "100%",
   minHeight: "100vh",
   backgroundColor:'#fff',
-  
   backgroundPosition: "0 0,100% 100%",
   backgroundRepeat  : 'no-repeat',
   backgroundSize: 'cover',
@@ -54,7 +53,7 @@ class TokenSalePage extends Component {
                 
                     <header className=" text-center text-black">
                 
-                    <div className="container" style={{paddingTop:'50px'}}>
+                    <div className="container" style={{paddingTop:'20px'}}>
                     
                         <h2 className="masthead-heading mb-0">Join Token Sale</h2>
                         <div>
