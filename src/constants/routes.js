@@ -7,3 +7,4 @@ export const PASSWORD_FORGET ='/pw_forget'
 
 export const JOIN_TOKEN_SALE ='/tokensale'
 
+export const USER_INFO ='/user'

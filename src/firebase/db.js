@@ -10,4 +10,5 @@ export const doCreateUser=(id,username,email)=>
 export const onceGetUsers=()=>
     db.ref(`users`).once('value')
 
-    
+export const getUser=(id)=>
+    db.ref(`users/${id}`).once('value')

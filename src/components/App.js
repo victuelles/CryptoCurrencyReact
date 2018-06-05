@@ -8,6 +8,7 @@ import PasswordForgetPage from './PasswordForget'
 import HomePage from './Home'
 import AccountPage from './Account'
 import JoinTokeSalePage from './JoinTokeSale'
+import UserInfoPage from './UserInfo'
 import * as routes from '../constants/routes'
 import withAuthentication from './withAuthentication'
 import './App.css';
@@ -36,6 +37,9 @@ const App = () =>
         />
         <Route 
           exact path={routes.JOIN_TOKEN_SALE} component={()=><JoinTokeSalePage/>} 
+        />
+        <Route 
+          exact path={routes.USER_INFO} component={()=><UserInfoPage/>} 
         />
       </div>
   </Router>

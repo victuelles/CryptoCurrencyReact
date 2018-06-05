@@ -20,28 +20,12 @@ import {
 
 const Navigation = () =>
     <AuthUserContext.Consumer> 
-            {authUser=>authUser? <NavigationAuth1/>:<NavigationNonAuth/>}
+            {authUser=>authUser? <NavigationAuth/>:<NavigationNonAuth/>}
     </AuthUserContext.Consumer>
 
-const NavigationAuth=()=>
-<nav className="navbar navbar-expand-sm navbar-dark navbar-custom fixed-top">
-<div className="container">
-  <a className="navbar-brand" href="/"> <img src={logo} className="logo" alt="logo" /></a>
-  <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-    <span className="navbar-toggler-icon"></span>
-  </button>
-  <div className="collapse navbar-collapse" id="navbarResponsive">
-    <ul className="navbar-nav ml-auto">
-        <li className="nav-item"><Link className="nav-link"  activeClassName="active" to={routes.LANDING}> Home</Link></li>
-        <li className="nav-item"><Link className="nav-link" activeClassName="active" to={routes.JOIN_TOKEN_SALE}> Token Sale</Link></li>
-        <li className="nav-item"><Link className="nav-link" activeClassName="active" to={routes.ACCOUNT}> Account</Link></li>
-        <li className="nav-item"><SignOutButton/></li>
-        </ul>
-        </div>
-      </div>
-    </nav>
 
-class NavigationAuth1 extends Component {
+
+class NavigationAuth extends Component {
     constructor(props) {
        super(props);
    

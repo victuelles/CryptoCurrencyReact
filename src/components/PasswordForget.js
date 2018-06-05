@@ -57,9 +57,8 @@ class PasswordForgetForm extends Component {
                     <div className="col-md-3"></div>
                     <div className="col-md-6">
                         <div className="form-group has-danger">
-                            <label className="sr-only" for="email">E-Mail Address</label>
+                            
                             <div className="input-group mb-2 mr-sm-2 mb-sm-0">
-                                <div className="input-group-addon" style={{width: 2.6+'rem'}}><i className="fa fa-at"></i></div>
                                 <input value={email} className="form-control" 
                             onChange={event=>this.setState(byPropKey('email',event.target.value))}
                             type='email'

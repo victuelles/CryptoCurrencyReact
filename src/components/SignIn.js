@@ -57,7 +57,7 @@ class SignInForm extends Component {
                 <div className="row">
                     <div className="col-md-3"></div>
                     <div className="col-md-6">
-                        <h2>Please Login</h2>
+                        <h2>Sign In</h2>
                         <hr/>
                     </div>
                 </div>
@@ -65,7 +65,7 @@ class SignInForm extends Component {
                     <div className="col-md-3"></div>
                     <div className="col-md-6">
                         <div className="form-group has-danger">
-                            <label className="sr-only" for="email">E-Mail Address</label>
+                         
                             <div className="input-group mb-2 mr-sm-2 mb-sm-0">
                                 <div className="input-group-addon" style={{width: 2.6+'rem'}}><i className="fa fa-at"></i></div>
                                 <input value={email} className="form-control" 
@@ -88,7 +88,7 @@ class SignInForm extends Component {
                 <div className="col-md-3"></div>
                 <div className="col-md-6">
                     <div className="form-group">
-                        <label className="sr-only" for="password">Password</label>
+                       
                         <div className="input-group mb-2 mr-sm-2 mb-sm-0">
                             <div className="input-group-addon" style={{width: '2.6rem'}}><i className="fa fa-key"></i></div>
                             <input value={password} className="form-control" 
@@ -121,7 +121,7 @@ class SignInForm extends Component {
             <div className="row" style={{paddingTop: '1rem'}}>
                 <div className="col-md-3"></div>
                 <div className="col-md-6">
-                    <button disabled={isInvalid} type="submit" className="btn btn-success"><i className="fa fa-sign-in"></i> Login</button>
+                    <button disabled={isInvalid} type="submit" className="btn btn-primary btn-block btn-lg"><i className="fa fa-sign-in"></i> Login</button>
                     <PasswordForgetLink/>
                     <SignUpLink />
                 </div>

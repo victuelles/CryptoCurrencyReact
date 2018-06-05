@@ -39,23 +39,56 @@ class PasswordChangeForm extends Component {
                 passwordOne===''
   
         return ( 
+            <div className="container"  style={{marginTop:40+'px'}}>  
             <form onSubmit={this.onSubmit}>
-                 <input value={passwordOne} 
-                        onChange={event=>this.setState(byPropKey('passwordOne',event.target.value))}
-                        type='text'
-                        placeholder='New Password'
-                 />
-                <input value={passwordTwo} 
+            <div className="row">
+                <div className="col-md-3"></div>
+                <div className="col-md-6">
+                    <h2>Change Password</h2>
+                    <hr/>
+                </div>
+            </div>
+            <div className="row">
+                <div className="col-md-3"></div>
+                    <div className="col-md-6">
+                        <div className="form-group has-danger">
+                            <input value={passwordOne} 
+                                    onChange={event=>this.setState(byPropKey('passwordOne',event.target.value))}
+                                    type='text'
+                                    placeholder='New Password'
+                            />                  
+                        </div>
+                </div>
+            </div>      
+            <div className="row"> 
+                <div className="col-md-3"></div>
+                    <div className="col-md-6">
+                        <div className="form-group has-danger">
+                            
+                            <div className="input-group mb-2 mr-sm-2 mb-sm-0">
+                               
+               
+                                <input value={passwordTwo} 
                         onChange={event=>this.setState(byPropKey('passwordTwo',event.target.value))}
                         type='text'
                         placeholder='Confirm New Password'
-                 />
-                <button disabled={isInvalid} type ='submit'>
-                     Reset my password
-                </button>
+                 />                   
+                        </div>
+                        </div>
+                    </div>
+                    <div className="col-md-3">
+                        <div className="form-control-feedback">
+                        <button disabled={isInvalid} className="btn btn-primary" type ='submit'>
+                           Reset my Password
+                         </button>
+                        </div>
+                </div>
+             </div>
+
 
                 {error && <p>{error.message}</p>}
             </form>
+            </div>
          )
     }
 }

@@ -25,8 +25,8 @@ let sectionStyleOverlay = {
 }
 
 const Landing = () => 
-<div class="page">
-    <div class="home-page">
+<div className="page">
+    <div className="home-page">
        
         <header className=" text-center text-black">
         <div  style={sectionStyleHeaderMasthead}>
