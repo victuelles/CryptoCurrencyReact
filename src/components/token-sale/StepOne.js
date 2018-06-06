@@ -45,17 +45,14 @@ export default class Step1 extends Component {
             <div className="wallet-modal-content-row">Make sure to enter correct wallet addresses which you will send your payment from.</div>
             <div className="wallet-modal-content-row">Do not enter or pay from an exchange address!</div>
          </div>
-         <div className="wallet-modal-footer">
-            <div className="form-group continue-continue-continue"><button type="submit" className="">Continue</button></div>
-            <div className="form-group ghost-button modal-cancel"><button className="">Cancel</button></div>
-         </div>
+        
       </div>
       <div className="form-group"><label >Your sending ETH wallet address</label>
       <input type="text" id="sending-ETH-wallet" name="sending-ETH-wallet" className="" autoComplete="cc-number" value=""/></div>
      
    </div>
    <div className="wallet-footer ">
-      <div className="form-group"><button type="submit" className="">Continue</button></div>
+      <div className="form-group"><button onClick={() => this.props.jumpToStep(1)}> Continue </button></div>
    </div>
 </div>
         </div>
