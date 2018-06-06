@@ -36,7 +36,7 @@ class SignInForm extends Component {
         auth.doSigInWithEmailAndPassword(email,password)
             .then(()=>{
                 this.setState(()=>({...INITIAL_STATE}))
-                history.push(routes.HOME)
+                history.push(routes.USER_INFO)
             })
             .catch(error=>{
                 this.setState(byPropKey('error',error))

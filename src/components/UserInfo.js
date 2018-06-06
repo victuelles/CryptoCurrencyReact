@@ -47,7 +47,7 @@ class UserInfo extends Component {
         <FormGroup row>
           <Label for="phone" sm={2}>Phone</Label>
           <Col sm={6}>
-            <Input type="tel" defaultValue="" name="phone" id="phone"  required />
+            <Input type="tel"  name="phone" id="phone" placeholder="(###)###-##-##" required />
           </Col>
         </FormGroup>
 
@@ -75,7 +75,7 @@ class UserInfo extends Component {
         <FormGroup row>
           <Label for="zipcode" sm={2}>ZIP/Postal Code</Label>
           <Col sm={6}>
-            <Input type="text" defaultValue="" name="zipcode" id="zipcode"  required />
+            <Input type="text"  name="zipcode" id="zipcode"  placeholder="Zip code"  />
           </Col>
         </FormGroup>
 
