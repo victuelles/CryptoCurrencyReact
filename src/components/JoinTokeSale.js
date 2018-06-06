@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import StepZilla from 'react-stepzilla'
 import Step1 from './token-sale/StepOne'
 import Step2 from './token-sale/StepTwo'
-import Background from '../images/top-bg.jpg';
-
-import * as routes from '../constants/routes'
+import Step3 from './token-sale/StepThree'
 
 let sectionStyleHeaderMasthead = {
   width: "100%",
@@ -45,8 +43,9 @@ class TokenSalePage extends Component {
         const steps =
     [
       {name: 'Wallet Addresses', component: <Step1 getStore={() => (this.getStore())} updateStore={(u) => {this.updateStore(u)}} />},
-      {name: 'Buy Tokens', component: <Step2 getStore={() => (this.getStore())} updateStore={(u) => {this.updateStore(u)}} />}
-        ]
+      {name: 'Buy Tokens', component: <Step2 getStore={() => (this.getStore())} updateStore={(u) => {this.updateStore(u)}} />},
+      {name: 'Confirmation', component: <Step3 getStore={() => (this.getStore())} updateStore={(u) => {this.updateStore(u)}} />}   
+    ]
         return (  
             <div className="page" style={sectionStyleHeaderMasthead}>
                 <div className="home-page">

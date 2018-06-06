@@ -1,10 +1,9 @@
 import React,{Component} from 'react';
-import {Link} from 'react-router-dom'
 import AuthUserContext from './AuthUserContext'
 import * as routes from '../constants/routes'
 import SignOutButton from './SignOut';
 import logo from "../images/logo.png";
-import { stack as Menu } from 'react-burger-menu'
+
 import {
     Collapse,
     Navbar,
@@ -13,10 +12,7 @@ import {
     Nav,
     NavItem,
     NavLink,
-    UncontrolledDropdown,
-    DropdownToggle,
-    DropdownMenu,
-    DropdownItem } from 'reactstrap';
+    } from 'reactstrap';
 
 const Navigation = () =>
     <AuthUserContext.Consumer> 
@@ -54,7 +50,7 @@ class NavigationAuth extends Component {
                    <NavLink href={routes.JOIN_TOKEN_SALE}>Join Token Sale</NavLink>
                  </NavItem>
                  <NavItem>
-                   <NavLink href={routes.ACCOUNT}>Account</NavLink>
+                   <NavLink href={routes.USER_INFO}>Account</NavLink>
                  </NavItem>                 
                  <NavItem><SignOutButton/>
                  </NavItem>

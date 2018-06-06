@@ -32,7 +32,7 @@ const Landing = () =>
         <div  style={sectionStyleHeaderMasthead}>
         <div  style={sectionStyleOverlay}>
           <div className="container" style={{paddingTop:'180px'}}>
-            <img src={People} />
+            <img src={People} alt='people' />
             <h1 className="masthead-heading mb-0">Content Ether</h1>
             <p >Blockchain for Media Companies</p>
 

@@ -14,8 +14,7 @@ const INITIAL_STATE= {
     email:'',
     passwordOne:'',
     passwordTwo:'',
-    error:null,
-    iAgree:''
+    error:null
 }
 const byPropKey =(propertyName,value)=>()=>({
     [propertyName]:value,
@@ -26,9 +25,20 @@ class SignUpForm extends Component {
         super(props)
         this.state = {...INITIAL_STATE}
     }
+    componentWillUnmount(){
 
+    }
+    handleInputChange(event) {
+        const target = event.target;
+        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const name = target.name;
+    
+        this.setState({
+          [name]: value
+        });
+      }
     onSubmit=(event)=>{
-        const {username,email,passwordOne,iAgree}=this.state;
+        const {username,email,passwordOne}=this.state;
         const {history}=this.props
         auth.doCreateUserWithEmailAndPassword(email,passwordOne)
             .then(authUser=>{
@@ -58,7 +68,8 @@ class SignUpForm extends Component {
                 passwordOne===''||
                 email===''||
                 username===''
-               
+                console.log('iAgree',iAgree)
+                console.log('username',username)
 
         return (
         <div className="container"  style={{marginTop:40+'px'}}>
@@ -115,7 +126,8 @@ class SignUpForm extends Component {
 				<div className="col-xs-4 col-sm-3 col-md-3">
 					<span className="button-checkbox">
 						<label className="checkbox">
-                        <input value={iAgree} className="btn btn-primary" data-dismiss="modal"
+                        <input value={!this.state.iAgree}  name="iAgree"    checked={this.state.iAgree} 
+                        className="btn btn-primary" data-dismiss="modal"
                         onChange={event=>this.setState(byPropKey('iAgree',event.target.value))}
                         type='checkbox'
                       />	I Agree
@@ -123,7 +135,8 @@ class SignUpForm extends Component {
 					</span>
 				</div>
 				<div className="col-xs-8 col-sm-9 col-md-9">
-					 By clicking <strong className="label label-primary">Register</strong>, you agree to the <a href="#" data-toggle="modal" data-target="#t_and_c_m">Terms and Conditions</a> set out by this site, including our Cookie Use.
+					 By clicking <strong className="label label-primary">Register</strong>, you agree to the
+                     <a href={routes.SIGN_IN} data-toggle="modal" data-target="#t_and_c_m">Terms and Conditions</a> set out by this site, including our Cookie Use.
 				</div>
 			</div>
 
@@ -137,10 +150,7 @@ class SignUpForm extends Component {
                 </div>
 				<div className="col-xs-12 col-sm-6 col-md-6"><a href="/signin" className="btn btn-success btn-block btn-lg">Sign In</a></div>
 			</div>
-	 
  
-              
-
                 {error && <p>{error.message}</p>}
             </form>
             
