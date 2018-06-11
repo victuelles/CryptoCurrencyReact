@@ -5,7 +5,6 @@ import {auth,db} from '../firebase'
 
 const SignUpPage = ({history}) => 
     <div>
-      
         <SignUpForm history={history}/>
     </div>
 
@@ -49,7 +48,7 @@ class SignUpForm extends Component {
                 .then(()=>{
                     this.setState(()=>({...INITIAL_STATE}))
                     //redirect to 
-                    history.push(routes.ACCOUNT)
+                    history.push(routes.USER_INFO)
                 })
                 .catch(error=>{
                     this.setState(byPropKey('error',error))
@@ -61,15 +60,13 @@ class SignUpForm extends Component {
         event.preventDefault() 
     }
     render() { 
-        const {username,email,passwordOne,passwordTwo,error,iAgree} = this.state
+        const {username,email,passwordOne,passwordTwo,error} = this.state
         
         const isInvalid=
                 passwordOne!==passwordTwo ||
                 passwordOne===''||
                 email===''||
                 username===''
-                console.log('iAgree',iAgree)
-                console.log('username',username)
 
         return (
         <div className="container"  style={{marginTop:40+'px'}}>
