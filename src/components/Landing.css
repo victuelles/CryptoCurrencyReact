@@ -382,3 +382,8 @@ a:hover, a:focus, a:active {
   text-align: left;
   padding: 10px;
 }
+
+.callout i {
+  color: rgb(114, 156, 199);
+  text-align: center;
+}

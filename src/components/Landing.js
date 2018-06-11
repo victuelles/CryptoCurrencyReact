@@ -109,36 +109,39 @@ const Landing = () =>
           </div>
           <div className="col-lg-6 col-md-6 mb-5 mb-lg-0">
           <h2 className="mx-auto mb-5">Deep Technology</h2>
-          <p class="lead mb-5">The platform was designed by seasoned entrepreneurial and technical team of Industry veterans.
+          <p class="lead mb-5">
+          <div className="row" style={{padding:'10px'}}>
+            The platform was designed by seasoned entrepreneurial and technical team of Industry veterans.
+           </div>
             <div className="row">
-               <div className="col-lg-2 " >  
-                  <img width="100%" src={TechLogo} alt='TechLogo' />
+            <div className="col-1 col-sm-3 col-lg-2 " style={{textAlign:"center"}} > 
+                 <i className="fa fa-3 fa-gears " ></i>
                </div>
-                <div className="col-lg-8 " >
+               <div className="col-11 col-sm-9 col-lg-8 " >
                   Built on top of Etherum Blockchain
                </div>
             </div>  
             <div className="row">
-               <div className="col-lg-2 " >  
-                  <img width="100%" src={TechLogo} alt='TechLogo' />
+            <div className="col-1 col-sm-3 col-lg-2 " style={{textAlign:"center"}} > 
+                 <i className="fa fa-3 fa-id-card-o " ></i>
                </div>
-                <div className="col-lg-8 " >
+               <div className="col-11 col-sm-9 col-lg-8 " >
                   Deep learning of audience clusters
                </div>
             </div> 
             <div className="row">
-               <div className="col-lg-2 " >  
-                  <img width="100%" src={TechLogo} alt='TechLogo' />
+            <div className="col-1 col-sm-3 col-lg-2 " style={{textAlign:"center"}} > 
+                 <i className="fa fa-3 fa-money " ></i>
                </div>
-                <div className="col-lg-8 " >
+               <div className="col-11 col-sm-9 col-lg-8 " >
                   Powerful Media monetization
                </div>
             </div> 
             <div className="row">
-               <div className="col-lg-2 " >  
-                  <img width="100%" src={TechLogo} alt='TechLogo' />
+              <div className="col-1 col-sm-3 col-lg-2 " style={{textAlign:"center"}} > 
+                 <i className="fa fa-3 fa-users " ></i>
                </div>
-                <div className="col-lg-8 " >
+               <div className="col-11 col-sm-9 col-lg-8 " >
                   Tracking viral propagation of media
                </div>
             </div>  
