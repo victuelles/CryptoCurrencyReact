@@ -205,8 +205,8 @@ h6 {
 .service-icon {
   background-color: #fff;
   color: #1D809F;
-  height: 12rem;
-  width: 12rem;
+  height: 10rem;
+  width: 10rem;
   display: block;
   line-height: 12.5rem;
   font-size: 2.25rem;
@@ -214,7 +214,7 @@ h6 {
 }
 
 .callout {
-  padding: 6rem 0;
+  padding: 4rem 0;
   background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.1) 100%), url("/images/bg-callout.jpg");
   background-position: center center;
   background-repeat: no-repeat;
@@ -368,9 +368,9 @@ a:hover, a:focus, a:active {
 
 
 .features img {
-  width: 150px;
+  width: 125px;
   padding-left: 0px;
-  margin-top: -20px;
+  margin-top: -60px;
 }
 
 .image img {

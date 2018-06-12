@@ -43,7 +43,7 @@ const Landing = () =>
             <h1 className="masthead-heading mb-0">Content Ether</h1>
             <p >Blockchain for Media Companies</p>
 
-            <a href={routes.JOIN_TOKEN_SALE} className="btn btn-primary btn-xl rounded-pill mt-5">Join Token Sale</a>
+            <a href={routes.JOIN_TOKEN_SALE} className="btn btn-danger btn-xl rounded-pill mt-5">Join Token Sale</a>
           </div>
           </div>
         </div>
@@ -108,10 +108,10 @@ const Landing = () =>
             </div>
           </div>
           <div className="col-lg-6 col-md-6 mb-5 mb-lg-0">
-          <h2 className="mx-auto mb-5">Deep Technology</h2>
+          <h2 className="mx-auto ">Deep Technology</h2>
          
           <div className="row" style={{padding:'10px'}}>
-          <p className="lead mb-5">
+          <p className="lead ">
             The platform was designed by seasoned entrepreneurial and technical team of Industry veterans.
             </p>
            </div>
@@ -119,7 +119,7 @@ const Landing = () =>
             <div className="col-1 col-sm-3 col-lg-2 " style={{textAlign:"center"}} > 
                  <i className="fa fa-3 fa-users " ></i>
                </div>
-               <div className="col-11 col-sm-9 col-lg-8 " >
+               <div className="col-10 col-sm-9 col-lg-8 " >
                   Built on top of Etherum Blockchain
                </div>
             </div>  
@@ -127,7 +127,7 @@ const Landing = () =>
             <div className="col-1 col-sm-3 col-lg-2 " style={{textAlign:"center"}} > 
                  <i className="fa fa-3 fa-gears " ></i>
                </div>
-               <div className="col-11 col-sm-9 col-lg-8 " >
+               <div className="col-10 col-sm-9 col-lg-8 " >
                   Deep learning of audience clusters
                </div>
             </div> 
@@ -135,7 +135,7 @@ const Landing = () =>
             <div className="col-1 col-sm-3 col-lg-2 " style={{textAlign:"center"}} > 
                  <i className="fa fa-3 fa-money " ></i>
                </div>
-               <div className="col-11 col-sm-9 col-lg-8 " >
+               <div className="col-10 col-sm-9 col-lg-8 " >
                   Powerful Media monetization
                </div>
             </div> 
@@ -143,7 +143,7 @@ const Landing = () =>
               <div className="col-1 col-sm-3 col-lg-2 " style={{textAlign:"center"}} > 
                  <i className="fa fa-3 fa-users " ></i>
                </div>
-               <div className="col-11 col-sm-9 col-lg-8 " >
+               <div className="col-10 col-sm-9 col-lg-8 " >
                   Tracking viral propagation of media
                </div>
             </div>  
