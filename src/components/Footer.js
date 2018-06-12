@@ -6,17 +6,17 @@ const FooterPage = () =>
         <ul className="list-inline mb-5">
           <li className="list-inline-item">
             <a className="social-link rounded-circle text-white mr-3" href="#">
-            <i class="fa fa-facebook-official" aria-hidden="true"></i>
+            <i className="fa fa-facebook-official" aria-hidden="true"></i>
             </a>
           </li>
           <li className="list-inline-item">
             <a className="social-link rounded-circle text-white mr-3" href="#">
-            <i class="fa fa-twitter-square" aria-hidden="true"></i>
+            <i className="fa fa-twitter-square" aria-hidden="true"></i>
             </a>
           </li>
           <li className="list-inline-item">
             <a className="social-link rounded-circle text-white" href="#">
-            <i class="fa fa-github-square" aria-hidden="true"></i>
+            <i className="fa fa-github-square" aria-hidden="true"></i>
             </a>
           </li>
         </ul>

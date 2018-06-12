@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import withAuthorization from './withAuthorization'
 import {db,firebase} from '../firebase'
 import * as routes from '../constants/routes'
+import axios from  'axios'
 
 import { Container,Row,Col, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 const UserPage = ({history}) => 
@@ -19,6 +20,8 @@ const INITIAL_STATE= {
   street:"",
   username:"",
   zipcode:"",
+  isButtonDisabled: false,
+  imagePreviewUrl:'',
   error:null
 }
 const byPropKey =(propertyName,value)=>()=>({
@@ -30,6 +33,50 @@ class UserInfo extends Component {
   constructor(props){
       super(props)
       this.state = {...INITIAL_STATE}
+  }
+
+  fileSelectedHandler = event =>{
+    let reader = new FileReader();
+    let file = event.target.files[0];
+
+    reader.onloadend = () => {
+      this.setState({
+        file: file,
+        imagePreviewUrl: reader.result
+      });
+    }
+
+    reader.readAsDataURL(file)
+  //  console.log(event.target.files[0]);
+     event.preventDefault();
+    this.setState({
+      selectedFile:event.target.files[0],
+      isButtonDisabled: false
+    })
+  }
+   getFileExtension=(filename)=> {
+    return (/[.]/.exec(filename)) ? /[^.]+$/.exec(filename)[0] : undefined;
+  }
+
+  fileUploadHandler=(e)=>{
+    //e.preventDefault();
+    this.setState({
+      isButtonDisabled: true
+    });
+    console.log("fileUploadHandler state=",this.state);
+    const fd= new FormData();
+    const newFN= this.state.id+'_ID.'+this.getFileExtension(this.state.selectedFile.name)
+    fd.append('image',this.state.selectedFile,newFN)
+    axios.post(' https://us-central1-contentether.cloudfunctions.net/uploadFile',
+    fd,{
+      onUploadProgress:progressEvent =>{
+        console.log('Upload progress: '+Math.round((progressEvent.loaded/progressEvent.total)*100))+"%"
+      }
+    }).then(res=>{
+      console.log(res)
+
+    })
+    console.log('fileUploadHandler called');
   }
     componentWillUnmount(){
 
@@ -67,7 +114,13 @@ class UserInfo extends Component {
         }
         const user= this.state;
         console.log("user=",user);
-        
+        let {imagePreviewUrl} = this.state;
+        let $imagePreview = null;
+        if (imagePreviewUrl) {
+          $imagePreview = (<img src={imagePreviewUrl} />);
+        } else {
+          $imagePreview = (<div className="previewText">Please select an Image for Preview</div>);
+        }
       
         return (
         <Form  onSubmit={this.onSubmit}>
@@ -140,12 +193,23 @@ class UserInfo extends Component {
         <FormGroup row>
           <Label for="exampleFile" sm={2}>Identification</Label>
           <Col sm={10}>
-            <Input type="file" name="file" id="exampleFile" />
+            <Input 
+                   type="file" name="file" 
+                   id="idFile"  accept="image/*"  
+                   onChange={this.fileSelectedHandler}
+                   ref={fileInput=>this.fileInput=fileInput}
+              />
+            <div className="imgPreview">
+             {$imagePreview}
+           </div>
+           <Button  onClick={this.fileUploadHandler}  disabled={this.state.isButtonDisabled}>Upload file</Button>
+
             <FormText color="muted">
               Submit a personal identity document with photo: Passport, ID, Residence document (both sides)
             </FormText>
           </Col>
         </FormGroup>
+
         <FormGroup row style={{paddingTop:'20px'}}>
           <Label for="exampleFile" sm={2}>Bill/Document</Label>
           <Col sm={10}>
@@ -156,7 +220,7 @@ class UserInfo extends Component {
           </Col>
         </FormGroup>
           <Row>
-                 <Button outline size="md" color="primary">Save</Button>
+              <Button outline size="md" color="primary">Save</Button>
          </Row>
         
     </Form>
