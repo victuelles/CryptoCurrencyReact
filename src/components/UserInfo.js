@@ -4,7 +4,7 @@ import {db,firebase} from '../firebase'
 import * as routes from '../constants/routes'
 import axios from  'axios'
 
-import { Container,Row,Col, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Container,Row,Col, Button, Form, FormGroup, Label, Input, FormText,Progress,Fade } from 'reactstrap';
 const UserPage = ({history}) => 
     <div>
         <UserInfo history={history}/>
@@ -20,8 +20,11 @@ const INITIAL_STATE= {
   street:"",
   username:"",
   zipcode:"",
-  isButtonDisabled: false,
+  photoUrlId:"",
+  isButtonDisabled: true,
   imagePreviewUrl:'',
+  loadingProgress:0,
+  shouldHide:false,
   error:null
 }
 const byPropKey =(propertyName,value)=>()=>({
@@ -38,6 +41,9 @@ class UserInfo extends Component {
   fileSelectedHandler = event =>{
     let reader = new FileReader();
     let file = event.target.files[0];
+    this.setState({
+     shouldHide:true
+    });
 
     reader.onloadend = () => {
       this.setState({
@@ -45,14 +51,13 @@ class UserInfo extends Component {
         imagePreviewUrl: reader.result
       });
     }
-
     reader.readAsDataURL(file)
-  //  console.log(event.target.files[0]);
      event.preventDefault();
-    this.setState({
+      this.setState({
       selectedFile:event.target.files[0],
       isButtonDisabled: false
     })
+      console.log("fileSelectedHandler",this.state);
   }
    getFileExtension=(filename)=> {
     return (/[.]/.exec(filename)) ? /[^.]+$/.exec(filename)[0] : undefined;
@@ -67,10 +72,16 @@ class UserInfo extends Component {
     const fd= new FormData();
     const newFN= this.state.id+'_ID.'+this.getFileExtension(this.state.selectedFile.name)
     fd.append('image',this.state.selectedFile,newFN)
+    fd.append('uid',this.state.id)
+    
     axios.post(' https://us-central1-contentether.cloudfunctions.net/uploadFile',
     fd,{
       onUploadProgress:progressEvent =>{
         console.log('Upload progress: '+Math.round((progressEvent.loaded/progressEvent.total)*100))+"%"
+        
+        this.setState({
+          loadingProgress: Math.round((progressEvent.loaded/progressEvent.total)*100)
+        });
       }
     }).then(res=>{
       console.log(res)
@@ -85,7 +96,9 @@ class UserInfo extends Component {
         firebase.auth.onAuthStateChanged(authUser=>{
             //retrieve from database the users/uid
 
-            db.getUser(authUser.uid).then(snapshot=>this.setState(()=>(snapshot.val())))
+            db.getUser(authUser.uid).then(snapshot=>this.setState(()=>(snapshot.val()))).then(()=>{
+              console.log(this.state)
+            })
         });
      }
      onSubmit=(event)=>{
@@ -114,13 +127,22 @@ class UserInfo extends Component {
         }
         const user= this.state;
         console.log("user=",user);
-        let {imagePreviewUrl} = this.state;
+        let {imagePreviewUrl,loadingProgress,shouldHide,photoUrlId} = this.state;
         let $imagePreview = null;
-        if (imagePreviewUrl) {
-          $imagePreview = (<img src={imagePreviewUrl} />);
-        } else {
-          $imagePreview = (<div className="previewText">Please select an Image for Preview</div>);
-        }
+        if (photoUrlId &&!imagePreviewUrl) {
+
+          $imagePreview = (<img src={photoUrlId} />);
+          shouldHide=true;
+          console.log(photoUrlId);
+       
+        } else{
+          if (imagePreviewUrl) {
+            $imagePreview = (<img src={imagePreviewUrl} />);
+            
+          } else {
+            $imagePreview = (<div className="previewText">Please select an Image for Preview</div>);
+          }
+      }
       
         return (
         <Form  onSubmit={this.onSubmit}>
@@ -199,15 +221,23 @@ class UserInfo extends Component {
                    onChange={this.fileSelectedHandler}
                    ref={fileInput=>this.fileInput=fileInput}
               />
-            <div className="imgPreview">
-             {$imagePreview}
-           </div>
+            
+              <Col sm={8} >
+              <Fade in={shouldHide} tag="h5" className="mt-3">
+                  <div className="imgPreview">
+                  {$imagePreview}
+                </div>
+                <div className="text-center">{loadingProgress}%</div>
+                <Progress value={loadingProgress}/>
+                </Fade>
+              </Col>
            <Button  onClick={this.fileUploadHandler}  disabled={this.state.isButtonDisabled}>Upload file</Button>
 
             <FormText color="muted">
               Submit a personal identity document with photo: Passport, ID, Residence document (both sides)
             </FormText>
           </Col>
+
         </FormGroup>
 
         <FormGroup row style={{paddingTop:'20px'}}>
