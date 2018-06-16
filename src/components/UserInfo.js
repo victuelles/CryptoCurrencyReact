@@ -21,6 +21,7 @@ const INITIAL_STATE= {
   username:"",
   zipcode:"",
   photoUrlId:"",
+  photoUrlIdThumb:"",
   isButtonDisabled: true,
   imagePreviewUrl:'',
   loadingProgress:0,
@@ -77,7 +78,7 @@ class UserInfo extends Component {
     axios.post(' https://us-central1-contentether.cloudfunctions.net/uploadFile',
     fd,{
       onUploadProgress:progressEvent =>{
-        console.log('Upload progress: '+Math.round((progressEvent.loaded/progressEvent.total)*100))+"%"
+        console.log('Upload progress: '+Math.round((progressEvent.loaded/progressEvent.total)*100)+"%")
         
         this.setState({
           loadingProgress: Math.round((progressEvent.loaded/progressEvent.total)*100)
@@ -127,11 +128,11 @@ class UserInfo extends Component {
         }
         const user= this.state;
         console.log("user=",user);
-        let {imagePreviewUrl,loadingProgress,shouldHide,photoUrlId} = this.state;
+        let {imagePreviewUrl,loadingProgress,shouldHide,photoUrlId,photoUrlIdThumb} = this.state;
         let $imagePreview = null;
         if (photoUrlId &&!imagePreviewUrl) {
 
-          $imagePreview = (<img src={photoUrlId} />);
+          $imagePreview = !!photoUrlIdThumb?(<img src={photoUrlIdThumb} alt="ID photo" />):(<img src={photoUrlId}  alt="ID photo"/>);
           shouldHide=true;
           console.log(photoUrlId);
        

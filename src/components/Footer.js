@@ -1,21 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 const FooterPage = () => 
     <footer className="footer text-center">
       <div className="container">
         <ul className="list-inline mb-5">
           <li className="list-inline-item">
-            <a className="social-link rounded-circle text-white mr-3" href="#">
+            <a className="social-link rounded-circle text-white mr-3" >
             <i className="fa fa-facebook-official" aria-hidden="true"></i>
             </a>
           </li>
           <li className="list-inline-item">
-            <a className="social-link rounded-circle text-white mr-3" href="#">
+            <a className="social-link rounded-circle text-white mr-3" >
             <i className="fa fa-twitter-square" aria-hidden="true"></i>
             </a>
           </li>
           <li className="list-inline-item">
-            <a className="social-link rounded-circle text-white" href="#">
+            <a className="social-link rounded-circle text-white" >
             <i className="fa fa-github-square" aria-hidden="true"></i>
             </a>
           </li>
