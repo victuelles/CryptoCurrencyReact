@@ -132,13 +132,13 @@ class UserInfo extends Component {
         let $imagePreview = null;
         if (photoUrlId &&!imagePreviewUrl) {
 
-          $imagePreview = !!photoUrlIdThumb?(<img src={photoUrlIdThumb} alt="ID photo" />):(<img src={photoUrlId}  alt="ID photo"/>);
+          $imagePreview = !!photoUrlIdThumb?(<img src={photoUrlIdThumb} alt="ID document" />):(<img src={photoUrlId}  alt="ID document"/>);
           shouldHide=true;
           console.log(photoUrlId);
        
         } else{
           if (imagePreviewUrl) {
-            $imagePreview = (<img src={imagePreviewUrl} />);
+            $imagePreview = (<img src={imagePreviewUrl}  alt="ID document"/>);
             
           } else {
             $imagePreview = (<div className="previewText">Please select an Image for Preview</div>);
@@ -266,9 +266,7 @@ class UserInfo extends Component {
                  <h2>Account</h2>
                 </Row>
                 {this.renderUser()}
-
-          
-        </Container>
+            </Container>
         
          )
     }

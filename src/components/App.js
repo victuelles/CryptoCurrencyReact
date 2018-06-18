@@ -10,6 +10,7 @@ import HomePage from './Home'
 import AccountPage from './Account'
 import JoinTokeSalePage from './JoinTokeSale'
 import UserInfoPage from './UserInfo'
+import StripeStore from './StripeStore'
 import * as routes from '../constants/routes'
 import withAuthentication from './withAuthentication'
 import './App.css';
@@ -42,6 +43,10 @@ const App = () =>
         <Route 
           exact path={routes.USER_INFO} component={()=><UserInfoPage/>} 
         />
+        <Route 
+          exact path={routes.STRIPE_STORE} component={()=><StripeStore/>} 
+        />
+        
          <Footer/>
       </div>
      

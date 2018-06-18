@@ -8,11 +8,22 @@ import Feature3 from '../images/feature_rewards.png';
 import Feature4 from '../images/feature_purchase.png';
 import TechLogo from '../images/icon_deep_technology.png'
 import * as routes from '../constants/routes'
+import VideoIntro from './VideoIntro'
 import './Landing.css';
 
+
+
+const videoJsOptions = {
+  autoplay: false,
+  controls: true,
+  sources: [{
+    src: 'https://firebasestorage.googleapis.com/v0/b/contentether.appspot.com/o/videos%2FDialect101_Intro_15sec.mp4?alt=media&token=038d72b6-a1f4-40cb-bdda-26e96f16df09',
+    type: 'video/mp4'
+  }]
+}
 let sectionStyleHeaderMasthead = {
   width: "100%",
-  height: "300px",
+  height: "800px",
   backgroundColor:'#000',
   backgroundImage: `url(${Background})`,
   backgroundPosition: "50%",
@@ -23,7 +34,7 @@ let sectionStyleHeaderMasthead = {
 
 let sectionStyleOverlay = {
   width: "100%",
-  height: "300px",
+  height: "100%",
   backgroundColor:'rgba(75,81,95,0.5)',
   backgroundPosition: "50%",
   backgroundRepeat  : 'no-repeat',
@@ -38,9 +49,9 @@ const Landing = () =>
         <header className=" text-center text-black">
         <div  style={sectionStyleHeaderMasthead}>
         <div  style={sectionStyleOverlay}>
-          <div className="container" style={{paddingTop:'180px'}}>
+          <div className="container" style={{paddingTop:'180px',color:'white'}}>
             <img src={People} alt='people' />
-            <h1 className="masthead-heading mb-0">Content Ether</h1>
+            <h1 className="masthead-heading mb-0" >Content Ether</h1>
             <p >Blockchain for Media Companies</p>
 
             <a href={routes.JOIN_TOKEN_SALE} className="btn btn-danger btn-xl rounded-pill mt-5">Join Token Sale</a>
@@ -50,7 +61,7 @@ const Landing = () =>
         </header>
        
     </div>
-    <div className="features" style={{paddingTop:'380px'}}>
+    <div className="features" style={{paddingTop:'0px'}}>
     <section className="content-section bg-primary text-white text-center" id="services">
       <div className="container">
         <div className="content-section-heading">
@@ -150,6 +161,13 @@ const Landing = () =>
          
            </div>
         </div>
+      </div>
+    </section>
+    <section className="videoPlayer">
+         <div className="row align-items-center justify-content-center">
+          <div class="col-12 col-sm-10 col-lg-6 col-xl-4"> 
+            <VideoIntro  { ...videoJsOptions }/>
+          </div>
       </div>
     </section>
   </div>
